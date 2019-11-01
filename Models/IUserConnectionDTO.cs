@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PHS.Core.Models.DTOs
+namespace PHS.Core.Models
 {
     public interface IUserConnectionDTO
     {

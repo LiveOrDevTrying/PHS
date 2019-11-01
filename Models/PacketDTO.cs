@@ -2,7 +2,7 @@
 using PHS.Core.Enums;
 using System;
 
-namespace PHS.Core.Models.DTOs
+namespace PHS.Core.Models
 {
     public struct PacketDTO
     {

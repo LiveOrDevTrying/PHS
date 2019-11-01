@@ -1,5 +1,4 @@
 ﻿using PHS.Core.Enums;
-using PHS.Core.Models.DTOs;
 
 namespace PHS.Core.Events.Args.NetworkEventArgs
 {
