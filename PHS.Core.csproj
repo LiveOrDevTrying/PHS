@@ -2,15 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Rob Engel - LiveOrDevTrying</Authors>
+    <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
+    <Description>The core module for Pixel Horror Studios. This package contains basic interfaces for usersService and models for basic networking.</Description>
+    <Copyright>Copyright 2019</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/LiveOrDevTrying/PHS.Core</PackageProjectUrl>
+    <PackageIconUrl>https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/Packages/PHS.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/LiveOrDevTrying/PHS.Core</RepositoryUrl>
+    <RepositoryType>Github Public</RepositoryType>
+    <PackageTags>UsersService Base Networking PHS PixelHorrorStudios Pixel Horror Studios Core</PackageTags>
+    <PackageReleaseNotes>Initial commit</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime">
-      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.Runtime.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
 </Project>
