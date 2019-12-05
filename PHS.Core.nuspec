@@ -13,7 +13,7 @@
     <description>The core module for Pixel Horror Studios. This package contains basic interfaces for usersService and models for basic networking.</description>
     <releaseNotes>Initial commit</releaseNotes>
     <copyright>Copyright 2019</copyright>
-    <tags>UsersService Base Networking PHS PixelHorrorStudios Pixel Horror Studios Core</tags>
+    <tags>UserService User Service interfaces base networking PHS PixelHorrorStudios Pixel Horror Studios Core</tags>
     <dependencies>
       <group targetFramework="netcoreapp2.1">
         <dependency id="Microsoft.NETCore.App" version="[2.1,3]" />
