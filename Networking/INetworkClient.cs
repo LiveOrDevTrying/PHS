@@ -1,20 +1,16 @@
 ﻿using PHS.Core.Events;
 using PHS.Core.Events.Args.NetworkEventArgs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PHS.Core.Networking
 {
-    public interface INetworkClient
+    public interface INetworkClient<T, S>
+        where T : ConnectionEventArgs
+        where S : ErrorEventArgs
     {
         bool IsRunning { get; }
 
-        event NetworkingEventHandler<ConnectionEventArgs> ConnectionEvent;
-        event NetworkingEventHandler<ErrorEventArgs> ErrorEvent;
-
-        bool Connect();
-        bool Disconnect();
+        event NetworkingEventHandler<T> ConnectionEvent;
+        event NetworkingEventHandler<S> ErrorEvent;
 
         void Dispose();
     }
