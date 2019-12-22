@@ -1,17 +1,9 @@
-﻿using PHS.Core.Events;
-using PHS.Core.Events.Args.NetworkEventArgs;
+﻿using System;
 
 namespace PHS.Core.Networking
 {
-    public interface INetworkClient<T, S>
-        where T : ConnectionEventArgs
-        where S : ErrorEventArgs
+    public interface INetworkClient : IDisposable
     {
         bool IsRunning { get; }
-
-        event NetworkingEventHandler<T> ConnectionEvent;
-        event NetworkingEventHandler<S> ErrorEvent;
-
-        void Dispose();
     }
 }

@@ -11,7 +11,7 @@
     <icon>Logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The core module for Pixel Horror Studios. This package contains basic interfaces for usersService and models for basic networking.</description>
-    <releaseNotes>Initial commit</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>UserService User Service interfaces base networking PHS PixelHorrorStudios Pixel Horror Studios Core</tags>
     <dependencies>
