@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace PHS.Core.Services
 {
-    public interface IUserService
+    public interface IUserService : IDisposable
     {
         Task<Guid> GetUserIdAsync(string token);
     }
