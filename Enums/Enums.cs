@@ -12,4 +12,10 @@
         Disconnect,
         Connecting
     }
+
+    public enum ServerEventType
+    {
+        Start,
+        Stop
+    }
 }
