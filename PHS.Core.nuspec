@@ -10,12 +10,12 @@
     <projectUrl>https://github.com/LiveOrDevTrying/PHS.Core</projectUrl>
     <icon>Logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The core module for Pixel Horror Studios. This package contains basic interfaces for usersService and models for basic networking.</description>
+    <description>The core module for Pixel Horror Studios. This package contains basic interfaces for usersService and models for applications with networking.</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright 2019</copyright>
-    <tags>UserService User Service interfaces base networking PHS PixelHorrorStudios Pixel Horror Studios Core</tags>
+    <copyright>Copyright 2020</copyright>
+    <tags>UserService User Service interfaces base networking PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</tags>
     <dependencies>
-      <group targetFramework="netcoreapp2.1">
+      <group targetFramework=".NETCoreApp2.1">
         <dependency id="Microsoft.NETCore.App" version="[2.1,3]" />
         <dependency id="Newtonsoft.Json" version="[12.0.1,13]" />
       </group>

@@ -1,6 +1,6 @@
 ﻿using PHS.Core.Enums;
 
-namespace PHS.Core.Events.Args.NetworkEventArgs
+namespace PHS.Core.Events.Args.Networking
 {
     public class ConnectionEventArgs : BaseArgs
     {

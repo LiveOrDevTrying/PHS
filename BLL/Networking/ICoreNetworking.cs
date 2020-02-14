@@ -1,8 +1,8 @@
 ﻿using PHS.Core.Events;
-using PHS.Core.Events.Args.NetworkEventArgs;
+using PHS.Core.Events.Args.Networking;
 using System;
 
-namespace PHS.Core.Models
+namespace PHS.Core.BLL.Networking
 {
     public interface ICoreNetworking<T, U, V> : IDisposable
         where T : ConnectionEventArgs
