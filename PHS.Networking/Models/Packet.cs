@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PHS.Core.Models.Networking
+namespace PHS.Networking.Models
 {
-    public struct PacketDTO
+    public struct Packet
     {
         public string Data { get; set; }
         public DateTime Timestamp { get; set; }

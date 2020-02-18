@@ -1,18 +1,16 @@
-﻿using PHS.Core.Events;
-using PHS.Core.Events.Args.Networking;
+﻿using PHS.Networking.Events;
+using PHS.Networking.Events.Args;
 using System;
 
-namespace PHS.Core.BLL.Networking
+namespace PHS.Networking.Services
 {
-    public interface ICoreNetworking<T, U, V, W> : IDisposable
+    public interface ICoreNetworking<T, U, V> : IDisposable
         where T : ConnectionEventArgs
         where U : MessageEventArgs
         where V : ErrorEventArgs
-        where W : ServerEventArgs
     {
         event NetworkingEventHandler<T> ConnectionEvent;
         event NetworkingEventHandler<U> MessageEvent;
         event NetworkingEventHandler<V> ErrorEvent;
-        event NetworkingEventHandler<W> ServerEvent;
     }
 }

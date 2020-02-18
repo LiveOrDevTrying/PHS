@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PHS.Core.Models.Networking
+namespace PHS.Networking.Server.Services
 {
     public interface INetworkService : IDisposable
     {

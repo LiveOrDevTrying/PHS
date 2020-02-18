@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace PHS.Core.BLL.Users
+namespace PHS.Networking.Server.Services
 {
     public interface IUserService<T> : IDisposable
     {

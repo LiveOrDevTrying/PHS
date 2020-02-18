@@ -3,11 +3,11 @@
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
-    <title>PHS.Core</title>
+    <title>PHS</title>
     <authors>Rob Engel - LiveOrDevTrying</authors>
     <owners>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</owners>
     <license type="expression">Apache-2.0</license>
-    <projectUrl>https://github.com/LiveOrDevTrying/PHS.Core</projectUrl>
+    <projectUrl>https://github.com/LiveOrDevTrying/PHS</projectUrl>
     <icon>Logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The core module for Pixel Horror Studios. This package contains basic interfaces for usersService and models for applications with networking.</description>

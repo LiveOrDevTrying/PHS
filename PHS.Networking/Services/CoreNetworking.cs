@@ -1,21 +1,19 @@
-﻿using PHS.Core.Events;
-using PHS.Core.Events.Args.Networking;
+﻿using PHS.Networking.Events;
+using PHS.Networking.Events.Args;
 using System;
 
-namespace PHS.Core.BLL.Networking
+namespace PHS.Networking.Services
 {
-    public abstract class CoreNetworking<T, U, V, W> : IDisposable, ICoreNetworking<T, U, V, W>
+    public abstract class CoreNetworking<T, U, V> : IDisposable, ICoreNetworking<T, U, V>
         where T : ConnectionEventArgs
         where U : MessageEventArgs
         where V : ErrorEventArgs
-        where W : ServerEventArgs
     {
         protected string _endOfLineCharacters;
 
-        private NetworkingEventHandler<T> _connectionEvent;
-        private NetworkingEventHandler<U> _messageEvent;
-        private NetworkingEventHandler<V> _errorEvent;
-        private NetworkingEventHandler<W> _serverEvent;
+        private event NetworkingEventHandler<T> _connectionEvent;
+        private event NetworkingEventHandler<U> _messageEvent;
+        private event NetworkingEventHandler<V> _errorEvent;
 
         protected virtual void FireEvent(object sender, T args)
         {
@@ -28,10 +26,6 @@ namespace PHS.Core.BLL.Networking
         protected virtual void FireEvent(object sender, V args)
         {
             _errorEvent?.Invoke(sender, args);
-        }
-        protected virtual void FireEvent(object sender, W args)
-        {
-            _serverEvent?.Invoke(sender, args);
         }
         public virtual void Dispose()
         { }
@@ -67,17 +61,6 @@ namespace PHS.Core.BLL.Networking
             remove
             {
                 _errorEvent -= value;
-            }
-        }
-        public event NetworkingEventHandler<W> ServerEvent
-        {
-            add
-            {
-                _serverEvent += value;
-            }
-            remove
-            {
-                _serverEvent -= value;
             }
         }
     }

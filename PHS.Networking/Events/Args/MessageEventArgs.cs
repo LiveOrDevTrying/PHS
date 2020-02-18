@@ -1,6 +1,7 @@
-﻿using PHS.Core.Enums;
+﻿using PHS.Core.Events.Args;
+using PHS.Networking.Enums;
 
-namespace PHS.Core.Events.Args.Networking
+namespace PHS.Networking.Events.Args
 {
     public class MessageEventArgs : BaseArgs
     {

@@ -1,4 +1,4 @@
-﻿namespace PHS.Core.Enums
+﻿namespace PHS.Networking.Enums
 {
     public enum MessageEventType
     {
@@ -11,11 +11,5 @@
         Connected,
         Disconnect,
         Connecting
-    }
-
-    public enum ServerEventType
-    {
-        Start,
-        Stop
     }
 }

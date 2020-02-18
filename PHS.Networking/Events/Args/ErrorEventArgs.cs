@@ -1,6 +1,7 @@
-﻿using System;
+﻿using PHS.Core.Events.Args;
+using System;
 
-namespace PHS.Core.Events.Args.Networking
+namespace PHS.Networking.Events.Args
 {
     public class ErrorEventArgs : BaseArgs
     {
