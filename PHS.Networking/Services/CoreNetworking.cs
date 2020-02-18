@@ -9,8 +9,6 @@ namespace PHS.Networking.Services
         where U : MessageEventArgs
         where V : ErrorEventArgs
     {
-        protected string _endOfLineCharacters;
-
         private event NetworkingEventHandler<T> _connectionEvent;
         private event NetworkingEventHandler<U> _messageEvent;
         private event NetworkingEventHandler<V> _errorEvent;

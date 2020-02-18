@@ -5,6 +5,6 @@ namespace PHS.Networking.Server.Services
 {
     public interface IUserService<T> : IDisposable
     {
-        Task<T> GetUserIdAsync(string token);
+        Task<T> GetIdAsync(string token);
     }
 }

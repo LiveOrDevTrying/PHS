@@ -1,5 +1,6 @@
 ﻿using PHS.Core.Events.Args;
 using PHS.Networking.Enums;
+using PHS.Networking.Models;
 
 namespace PHS.Networking.Events.Args
 {
@@ -7,5 +8,6 @@ namespace PHS.Networking.Events.Args
     {
         public MessageEventType MessageEventType { get; set; }
         public string Message { get; set; }
+        public IPacket Packet { get; set; }
     }
 }
