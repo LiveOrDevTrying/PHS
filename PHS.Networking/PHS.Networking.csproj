@@ -13,7 +13,7 @@
     <RepositoryType>Github Public</RepositoryType>
     <PackageTags>Base Networking Client Server PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.2.2</Version>
+    <Version>1.2.3</Version>
     <PackageIcon>Logo.png</PackageIcon>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Pixel Horror Studios.pfx</AssemblyOriginatorKeyFile>
