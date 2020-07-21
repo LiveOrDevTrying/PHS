@@ -1,6 +1,7 @@
 ﻿using PHS.Networking.Events;
 using PHS.Networking.Events.Args;
 using System;
+using System.Threading.Tasks;
 
 namespace PHS.Networking.Services
 {
@@ -13,17 +14,17 @@ namespace PHS.Networking.Services
         private event NetworkingEventHandler<U> _messageEvent;
         private event NetworkingEventHandler<V> _errorEvent;
 
-        protected virtual void FireEvent(object sender, T args)
+        protected virtual async Task FireEventAsync(object sender, T args)
         {
-            _connectionEvent?.Invoke(sender, args);
+            await _connectionEvent?.Invoke(sender, args);
         }
-        protected virtual void FireEvent(object sender, U args)
+        protected virtual async Task FireEventAsync(object sender, U args)
         {
-            _messageEvent?.Invoke(sender, args);
+            await _messageEvent?.Invoke(sender, args);
         }
-        protected virtual void FireEvent(object sender, V args)
+        protected virtual async Task FireEventAsync(object sender, V args)
         {
-            _errorEvent?.Invoke(sender, args);
+            await _errorEvent?.Invoke(sender, args);
         }
         public virtual void Dispose()
         { }
