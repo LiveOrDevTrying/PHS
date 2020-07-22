@@ -16,15 +16,24 @@ namespace PHS.Networking.Services
 
         protected virtual async Task FireEventAsync(object sender, T args)
         {
-            await _connectionEvent?.Invoke(sender, args);
+            if (_connectionEvent != null)
+            {
+                await _connectionEvent?.Invoke(sender, args);
+            }
         }
         protected virtual async Task FireEventAsync(object sender, U args)
         {
-            await _messageEvent?.Invoke(sender, args);
+            if (_messageEvent != null)
+            {
+                await _messageEvent?.Invoke(sender, args);
+            }
         }
         protected virtual async Task FireEventAsync(object sender, V args)
         {
-            await _errorEvent?.Invoke(sender, args);
+            if (_errorEvent != null)
+            {
+                await _errorEvent?.Invoke(sender, args);
+            }
         }
         public virtual void Dispose()
         { }
