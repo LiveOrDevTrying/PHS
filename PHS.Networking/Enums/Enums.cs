@@ -5,7 +5,6 @@
         Sent,
         Receive
     }
-
     public enum ConnectionEventType
     {
         Connected,
