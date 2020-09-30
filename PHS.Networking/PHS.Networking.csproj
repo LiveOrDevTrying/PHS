@@ -1,32 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.4.0</Version>
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
     <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
     <Description>The core networking module for Pixel Horror Studios. This package contains events and models for network payloads for Client or Server connections. A server module is also available under PHS.Networking.Server. This package is used as a base module for many different applications including but not limited to: Allie.Chat, The Monitaur, Tcp.NET, WebsocketsSimple, and NTier.NET.</Description>
     <Copyright>Copyright 2020</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/LiveOrDevTrying/PHS</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
-    <RepositoryUrl>https://github.com/LiveOrDevTrying/PHS</RepositoryUrl>
-    <RepositoryType>Github Public</RepositoryType>
-    <PackageTags>Base Networking Client Server PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.2.5</Version>
     <PackageIcon>Logo.png</PackageIcon>
-    <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>Pixel Horror Studios.pfx</AssemblyOriginatorKeyFile>
-    <DelaySign>false</DelaySign>
+    <RepositoryUrl>https://github.com/LiveOrDevTrying/PHS</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Base Networking Client Server PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</PackageTags>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="PHS.Core" Version="1.*" />
-  </ItemGroup>
+<ItemGroup>
+	<PackageReference Include="PHS.Core" Version="1.*" />
+</ItemGroup>
 
-  <ItemGroup>
+<ItemGroup>
     <None Include="Logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
