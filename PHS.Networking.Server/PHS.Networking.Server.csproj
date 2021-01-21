@@ -17,7 +17,7 @@
   </PropertyGroup>
 	
 <ItemGroup>
-	<PackageReference Include="PHS.Core" Version="1.*" />
+	<PackageReference Include="PHS.Core" Version="2.*" />
 </ItemGroup>
 
 <ItemGroup>
