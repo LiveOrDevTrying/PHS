@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
-    <Version>2.1.0</Version>
+    <Version>2.1.4</Version>
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
     <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
     <Description>The core networking module for Pixel Horror Studios. This package contains events and models for network payloads for Client or Server connections. A server module is also available under PHS.Networking.Server. This package is used as a base module for many different applications including but not limited to: Allie.Chat, The Monitaur, Tcp.NET, WebsocketsSimple, and NTier.NET.</Description>
