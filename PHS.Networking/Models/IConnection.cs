@@ -1,4 +1,4 @@
-﻿namespace PHS.Networking.Server.Models
+﻿namespace PHS.Networking.Models
 {
     public interface IConnection
     {

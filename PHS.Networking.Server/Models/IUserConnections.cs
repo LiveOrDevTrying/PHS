@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PHS.Networking.Models;
+using System.Collections.Generic;
 using System.Net.Sockets;
 
 namespace PHS.Networking.Server.Models
