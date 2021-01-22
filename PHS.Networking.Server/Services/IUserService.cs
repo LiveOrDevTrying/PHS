@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace PHS.Networking.Server.Services
 {
-    public interface IUserService<T> : IDisposable
+    public interface IUserService<UId>
     {
         Task<bool> IsValidTokenAsync(string token);
-        Task<T> GetIdAsync(string token);
+        Task<UId> GetIdAsync(string token);
     }
 }
