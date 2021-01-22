@@ -9,7 +9,5 @@ namespace PHS.Networking.Server.Models
         public UId UserId { get; set; }
 
         ICollection<Connection> Connections { get; set; }
-
-        Connection GetConnection(TcpClient client);
     }
 }
