@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PHS.Networking.Server.Models
 {
-    public interface IUserConnections<UId, Connection> where Connection : IConnection
+    public interface IIdentity<UId, Connection> where Connection : IConnection
     {
         public UId UserId { get; set; }
 
