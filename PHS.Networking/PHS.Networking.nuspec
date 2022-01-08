@@ -15,7 +15,7 @@
     <copyright>Copyright 2022</copyright>
     <tags>Base Networking Client Server PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</tags>
     <dependencies>
-		<group targetFramework="netstandard2.1">
+		<group targetFramework="net5.0">
             <dependency id="PHS.Core" version="[5,6)" />
 		</group>
     </dependencies>
