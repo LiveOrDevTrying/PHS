@@ -5,7 +5,7 @@ namespace PHS.Networking.Server.Models
 {
     public interface IIdentity<UId, Connection> where Connection : IConnection
     {
-        public UId UserId { get; set; }
+        UId UserId { get; set; }
 
         ICollection<Connection> Connections { get; set; }
     }
