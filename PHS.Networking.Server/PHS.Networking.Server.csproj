@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
     <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
-    <Version>6.0.0</Version>
+    <Version>2.2.0</Version>
     <Description>The server core networking module for Pixel Horror Studios. This package contains events and models for network payloads for Server connections. This package is used as a base module for many different applications requiring server-side networking including but not limited to: Allie.Chat, The Monitaur, Tcp.NET, WebsocketsSimple, and NTier.NET.</Description>
     <Copyright>Copyright 2022</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PHS.Networking" Version="2.1.*" />
+    <PackageReference Include="PHS.Networking" Version="2.2.*" />
   </ItemGroup>
 
 </Project>
