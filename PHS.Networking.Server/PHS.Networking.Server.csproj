@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PHS.Networking" Version="2.1.*" />
+    <PackageReference Include="PHS.Networking" Version="6.0.*" />
   </ItemGroup>
 
 </Project>
