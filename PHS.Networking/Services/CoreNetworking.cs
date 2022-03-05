@@ -14,26 +14,17 @@ namespace PHS.Networking.Services
         private event NetworkingEventHandler<U> _messageEvent;
         private event NetworkingEventHandler<V> _errorEvent;
 
-        protected virtual async Task FireEventAsync(object sender, T args)
+        protected virtual void FireEvent(object sender, T args)
         {
-            if (_connectionEvent != null)
-            {
-                await _connectionEvent?.Invoke(sender, args);
-            }
+            _connectionEvent?.Invoke(sender, args);
         }
-        protected virtual async Task FireEventAsync(object sender, U args)
+        protected virtual void FireEvent(object sender, U args)
         {
-            if (_messageEvent != null)
-            {
-                await _messageEvent?.Invoke(sender, args);
-            }
+            _messageEvent?.Invoke(sender, args);
         }
-        protected virtual async Task FireEventAsync(object sender, V args)
+        protected virtual void FireEvent(object sender, V args)
         {
-            if (_errorEvent != null)
-            {
-                await _errorEvent?.Invoke(sender, args);
-            }
+            _errorEvent?.Invoke(sender, args);
         }
         public virtual void Dispose()
         { }
