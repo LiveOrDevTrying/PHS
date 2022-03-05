@@ -3,5 +3,5 @@ using System.Threading.Tasks;
 
 namespace PHS.Networking.Events
 {
-    public delegate Task NetworkingEventHandler<T>(object sender, T args) where T : BaseArgs;
+    public delegate void NetworkingEventHandler<T>(object sender, T args) where T : BaseArgs;
 }
