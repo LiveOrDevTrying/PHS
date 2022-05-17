@@ -8,5 +8,6 @@ namespace PHS.Networking.Events.Args
     {
         public MessageEventType MessageEventType { get; set; }
         public IPacket Packet { get; set; }
+        public byte[] Bytes { get; set; }
     }
 }
