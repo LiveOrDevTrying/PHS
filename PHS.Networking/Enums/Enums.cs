@@ -9,7 +9,6 @@
     public enum ConnectionEventType
     {
         Connected,
-        Disconnect,
-        Connecting
+        Disconnect
     }
 }
