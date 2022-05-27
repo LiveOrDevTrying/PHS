@@ -1,11 +1,9 @@
 ﻿using PHS.Networking.Events;
 using PHS.Networking.Events.Args;
-using System;
-using System.Threading.Tasks;
 
 namespace PHS.Networking.Services
 {
-    public abstract class CoreNetworking<T, U, V> : IDisposable, ICoreNetworking<T, U, V>
+    public abstract class CoreNetworkingGeneric<T, U, V> : ICoreNetworkingGeneric<T, U, V>
         where T : ConnectionEventArgs
         where U : MessageEventArgs
         where V : ErrorEventArgs
@@ -26,8 +24,7 @@ namespace PHS.Networking.Services
         {
             _errorEvent?.Invoke(sender, args);
         }
-        public virtual void Dispose()
-        { }
+        public abstract void Dispose();
 
         public event NetworkingEventHandler<T> ConnectionEvent
         {
