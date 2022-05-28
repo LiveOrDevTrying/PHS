@@ -6,5 +6,6 @@ namespace PHS.Networking.Events.Args
     public class MessageEventArgs : BaseArgs
     {
         public MessageEventType MessageEventType { get; set; }
+        public byte[] Bytes { get; set; }
     }
 }
