@@ -21,7 +21,9 @@ namespace PHS.Networking.Server.Services
         void Stop();
 
         Task<bool> BroadcastToAllConnectionsAsync(string message, W connectionSending = default, CancellationToken cancellationToken = default);
+        Task<bool> BroadcastToAllConnectionsAsync(byte[] message, W connectionSending = default, CancellationToken cancellationToken = default);
         Task<bool> SendToConnectionAsync(string message, W connection, CancellationToken cancellationToken = default);
+        Task<bool> SendToConnectionAsync(byte[] message, W connection, CancellationToken cancellationToken = default);
         Task<bool> DisconnectConnectionAsync(W connection, CancellationToken cancellationToken = default);
 
         IEnumerable<W> Connections { get; }
