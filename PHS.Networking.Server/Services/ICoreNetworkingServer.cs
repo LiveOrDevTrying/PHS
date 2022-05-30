@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace PHS.Networking.Server.Services
 {
-    public interface ICoreNetworkingServer<T, U, V, W> : ICoreNetworkingGeneric<T, U, V>
-        where T : ConnectionEventArgs
-        where U : MessageEventArgs
-        where V : ErrorEventArgs
-        where W : IConnection
+    public interface ICoreNetworkingServer<T, U, V, Z> : ICoreNetworkingGeneric<T, U, V, Z>
+        where T : ConnectionEventArgs<Z>
+        where U : MessageEventArgs<Z>
+        where V : ErrorEventArgs<Z>
+        where Z : IConnection
     {
         event NetworkingEventHandler<ServerEventArgs> ServerEvent;
 
@@ -22,11 +22,11 @@ namespace PHS.Networking.Server.Services
 
         Task<bool> BroadcastToAllConnectionsAsync(string message, CancellationToken cancellationToken = default);
         Task<bool> BroadcastToAllConnectionsAsync(byte[] message, CancellationToken cancellationToken = default);
-        Task<bool> SendToConnectionAsync(string message, W connection, CancellationToken cancellationToken = default);
-        Task<bool> SendToConnectionAsync(byte[] message, W connection, CancellationToken cancellationToken = default);
-        Task<bool> DisconnectConnectionAsync(W connection, CancellationToken cancellationToken = default);
+        Task<bool> SendToConnectionAsync(string message, Z connection, CancellationToken cancellationToken = default);
+        Task<bool> SendToConnectionAsync(byte[] message, Z connection, CancellationToken cancellationToken = default);
+        Task<bool> DisconnectConnectionAsync(Z connection, CancellationToken cancellationToken = default);
 
-        IEnumerable<W> Connections { get; }
+        IEnumerable<Z> Connections { get; }
         int ConnectionCount { get; }
         bool IsServerRunning { get; }
     }
