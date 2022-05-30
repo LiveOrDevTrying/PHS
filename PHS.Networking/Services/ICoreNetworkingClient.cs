@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace PHS.Networking.Services
 {
-    public interface ICoreNetworkingClient<T, U, V, W> : ICoreNetworkingGeneric<T, U, V>
-        where T : ConnectionEventArgs
-        where U : MessageEventArgs
-        where V : ErrorEventArgs
+    public interface ICoreNetworkingClient<T, U, V, W> : ICoreNetworkingGeneric<T, U, V, W>
+        where T : ConnectionEventArgs<W>
+        where U : MessageEventArgs<W>
+        where V : ErrorEventArgs<W>
         where W : IConnection
     {
         Task<bool> SendAsync(string message, CancellationToken cancellationToken = default);
