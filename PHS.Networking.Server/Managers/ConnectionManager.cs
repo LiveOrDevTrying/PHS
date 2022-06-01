@@ -1,4 +1,5 @@
 ﻿using PHS.Networking.Models;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +32,11 @@ namespace PHS.Networking.Server.Managers
         {
             return _connections;
         }
-        public virtual T Get(string id)
+        public virtual bool Get(string id, out T connection)
         {
-            return _connections.TryGetValue(id, out var connection) ? connection : default;
+            return _connections.TryGetValue(id, out connection);
         }
-        public bool Add(string id, T connection)
+        public virtual bool Add(string id, T connection)
         {
             return _connections.TryAdd(id, connection);
         }
