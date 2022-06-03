@@ -2,6 +2,6 @@
 {
     public interface IConnection
     {
-        public string ConnectionId { get; set; }
+        string ConnectionId { get; set; }
     }
 }
