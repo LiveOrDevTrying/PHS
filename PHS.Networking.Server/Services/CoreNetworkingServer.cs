@@ -9,6 +9,7 @@ using PHS.Networking.Models;
 using PHS.Networking.Events.Args;
 using PHS.Networking.Server.Handlers;
 using PHS.Networking.Server.Managers;
+using PHS.Networking.Enums;
 
 namespace PHS.Networking.Server.Services
 {
@@ -111,10 +112,34 @@ namespace PHS.Networking.Server.Services
             return await _handler.DisconnectConnectionAsync(connection, cancellationToken).ConfigureAwait(false);
         }
 
-        protected abstract void OnConnectionEvent(object sender, T args);
-        protected abstract void OnServerEvent(object sender, ServerEventArgs args);
-        protected abstract void OnMessageEvent(object sender, U args);
-        protected abstract void OnErrorEvent(object sender, V args);
+        protected virtual void OnConnectionEvent(object sender, T args)
+        {
+            switch (args.ConnectionEventType)
+            {
+                case ConnectionEventType.Connected:
+                    _connectionManager.Add(args.Connection.ConnectionId, args.Connection);
+                    break;
+                case ConnectionEventType.Disconnect:
+                    _connectionManager.Remove(args.Connection.ConnectionId);
+                    break;
+                default:
+                    break;
+            }
+
+            base.FireEvent(this, args);
+        }
+        protected virtual void OnServerEvent(object sender, ServerEventArgs args)
+        {
+            FireEvent(this, args);
+        }
+        protected virtual void OnMessageEvent(object sender, U args)
+        {
+            base.FireEvent(this, args);
+        }
+        protected virtual void OnErrorEvent(object sender, V args)
+        {
+            base.FireEvent(this, args);
+        }
 
         protected abstract X CreateHandler(byte[] certificate = null, string certificatePassword = null);
         protected abstract Y CreateConnectionManager();
