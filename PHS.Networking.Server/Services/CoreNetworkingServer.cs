@@ -126,7 +126,7 @@ namespace PHS.Networking.Server.Services
                     break;
             }
 
-            base.FireEvent(this, args);
+            FireEvent(this, args);
         }
         protected virtual void OnServerEvent(object sender, ServerEventArgs args)
         {
@@ -134,11 +134,11 @@ namespace PHS.Networking.Server.Services
         }
         protected virtual void OnMessageEvent(object sender, U args)
         {
-            base.FireEvent(this, args);
+            FireEvent(this, args);
         }
         protected virtual void OnErrorEvent(object sender, V args)
         {
-            base.FireEvent(this, args);
+            FireEvent(this, args);
         }
 
         protected abstract X CreateHandler(byte[] certificate = null, string certificatePassword = null);
