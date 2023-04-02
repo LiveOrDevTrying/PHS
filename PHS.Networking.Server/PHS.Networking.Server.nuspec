@@ -11,7 +11,8 @@
     <icon>Logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The server core networking module for Pixel Horror Studios. This package contains events and models for network payloads for Server connections. This package is used as a base module for many different applications requiring server-side networking including but not limited to: Allie.Chat, The Monitaur, Tcp.NET, WebsocketsSimple, and NTier.NET.</description>
-    <copyright>Copyright 2022</copyright>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2023</copyright>
     <tags>Base Networking Client Server PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</tags>
     <dependencies>
 		<group targetFramework="netcoreapp3.1">
