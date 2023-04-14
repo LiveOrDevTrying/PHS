@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PHS.Networking" Version="2.1.*" />
+    <PackageReference Include="PHS.Networking" Version="7.0.*" />
   </ItemGroup>
 
 </Project>
