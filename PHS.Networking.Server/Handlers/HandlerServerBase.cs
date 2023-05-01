@@ -17,8 +17,6 @@ namespace PHS.Networking.Server.Handlers
         where W : Params
         where Z : IConnection
     {
-        protected readonly byte[] _certificate;
-        protected readonly string _certificatePassword;
         protected bool _isRunning;
 
         protected event NetworkingEventHandler<ServerEventArgs> _serverEvent;
@@ -27,14 +25,8 @@ namespace PHS.Networking.Server.Handlers
         {
         }
 
-        public HandlerServerBase(W parameters, byte[] certificate, string certificatePassword) : base(parameters)
-        {
-            _certificate = certificate;
-            _certificatePassword = certificatePassword;
-        }
-
         public abstract void Start(CancellationToken cancellationToken = default);
-        public abstract void Stop();
+        public abstract void Stop(CancellationToken cancellationToken = default);
 
         public abstract Task<bool> SendAsync(string message, Z connection, CancellationToken cancellationToken);
         public abstract Task<bool> SendAsync(byte[] message, Z connection, CancellationToken cancellationToken);
@@ -42,7 +34,7 @@ namespace PHS.Networking.Server.Handlers
 
         protected virtual void FireEvent(object sender, ServerEventArgs args)
         {
-            _serverEvent?.Invoke(sender, args);
+            _serverEvent?.Invoke(this, args);
         }
 
         public bool IsServerRunning
