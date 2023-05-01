@@ -9,7 +9,17 @@ namespace PHS.Networking.Server.Managers
         protected ConcurrentDictionary<A, ConnectionManager<Z>> _users =
             new ConcurrentDictionary<A, ConnectionManager<Z>>();
 
-        public virtual bool AddIdentity(Z identity)
+        public virtual IEnumerable<Z> GetAllConnectionsForUser(A id)
+        {
+            if (_users.TryGetValue(id, out var user))
+            {
+                return user.GetAllConnections();
+            }
+
+            return System.Array.Empty<Z>();
+        }
+
+        public virtual bool AddUser(Z identity)
         {
             AddConnection(identity.ConnectionId, identity);
 
