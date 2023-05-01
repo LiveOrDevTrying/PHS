@@ -25,6 +25,7 @@ namespace PHS.Networking.Server.Services
     {
         protected readonly X _handler;
         protected readonly Y _connectionManager;
+        protected CancellationToken _cancellationToken;
 
         protected event NetworkingEventHandler<ServerEventArgs> _serverEvent;
 
@@ -41,6 +42,7 @@ namespace PHS.Networking.Server.Services
        
         public virtual void Start(CancellationToken cancellationToken = default)
         {
+            _cancellationToken = cancellationToken;
             _handler.Start(cancellationToken);
         }
         public virtual void Stop(CancellationToken cancellationToken = default)
@@ -128,7 +130,7 @@ namespace PHS.Networking.Server.Services
             FireEvent(this, args);
         }
 
-        protected abstract X CreateHandler(byte[] certificate = null, string certificatePassword = null);
+        protected abstract X CreateHandler();
         protected abstract Y CreateConnectionManager();
 
         protected virtual void FireEvent(object sender, ServerEventArgs args)
