@@ -18,7 +18,7 @@ namespace PHS.Networking.Server.Services
         event NetworkingEventHandler<ServerEventArgs> ServerEvent;
 
         void Start(CancellationToken cancellationToken = default);
-        void Stop();
+        void Stop(CancellationToken cancellation = default);
 
         Task<bool> BroadcastToAllConnectionsAsync(string message, CancellationToken cancellationToken = default);
         Task<bool> BroadcastToAllConnectionsAsync(byte[] message, CancellationToken cancellationToken = default);
