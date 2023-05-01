@@ -1,5 +1,4 @@
-﻿using System.Net.Sockets;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using PHS.Networking.Server.Events.Args;
 using PHS.Networking.Services;
@@ -14,7 +13,8 @@ using PHS.Networking.Enums;
 namespace PHS.Networking.Server.Services
 {
     public abstract class CoreNetworkingServer<T, U, V, W, X, Y, Z> :
-        CoreNetworkingGeneric<T, U, V, W, Z>
+        CoreNetworkingGeneric<T, U, V, W, Z>,
+        ICoreNetworkingServer<T, U, V, Z>
         where T : ConnectionEventArgs<Z>
         where U : MessageEventArgs<Z>
         where V : ErrorEventArgs<Z>
@@ -25,7 +25,6 @@ namespace PHS.Networking.Server.Services
     {
         protected readonly X _handler;
         protected readonly Y _connectionManager;
-        protected CancellationToken _cancellationToken;
 
         protected event NetworkingEventHandler<ServerEventArgs> _serverEvent;
 
@@ -39,33 +38,21 @@ namespace PHS.Networking.Server.Services
             _handler.ErrorEvent += OnErrorEvent;
             _handler.ServerEvent += OnServerEvent;
         }
-        public CoreNetworkingServer(W parameters,
-            byte[] certificate,
-            string certificatePassword) : base(parameters)
-        {
-            _connectionManager = CreateConnectionManager();
-
-            _handler = CreateHandler(certificate, certificatePassword);
-            _handler.ConnectionEvent += OnConnectionEvent;
-            _handler.MessageEvent += OnMessageEvent;
-            _handler.ErrorEvent += OnErrorEvent;
-            _handler.ServerEvent += OnServerEvent;
-        }
+       
         public virtual void Start(CancellationToken cancellationToken = default)
         {
-            _cancellationToken = cancellationToken;
             _handler.Start(cancellationToken);
         }
-        public virtual void Stop()
+        public virtual void Stop(CancellationToken cancellationToken = default)
         {
-            _handler.Stop();
+            _handler.Stop(cancellationToken);
         }
 
         public virtual async Task<bool> BroadcastToAllConnectionsAsync(string message, CancellationToken cancellationToken = default)
         {
             if (IsServerRunning)
             {
-                foreach (var connection in _connectionManager.GetAll())
+                foreach (var connection in _connectionManager.GetAllConnections())
                 {
                     await SendToConnectionAsync(message, connection, cancellationToken).ConfigureAwait(false);
                 }
@@ -79,7 +66,7 @@ namespace PHS.Networking.Server.Services
         {
             if (IsServerRunning)
             {
-                foreach (var connection in _connectionManager.GetAll())
+                foreach (var connection in _connectionManager.GetAllConnections())
                 {
                     await SendToConnectionAsync(message, connection, cancellationToken).ConfigureAwait(false);
                 }
@@ -117,10 +104,10 @@ namespace PHS.Networking.Server.Services
             switch (args.ConnectionEventType)
             {
                 case ConnectionEventType.Connected:
-                    _connectionManager.Add(args.Connection.ConnectionId, args.Connection);
+                    _connectionManager.AddConnection(args.Connection.ConnectionId, args.Connection);
                     break;
                 case ConnectionEventType.Disconnect:
-                    _connectionManager.Remove(args.Connection.ConnectionId);
+                    _connectionManager.RemoveConnection(args.Connection.ConnectionId);
                     break;
                 default:
                     break;
@@ -130,7 +117,7 @@ namespace PHS.Networking.Server.Services
         }
         protected virtual void OnServerEvent(object sender, ServerEventArgs args)
         {
-            FireEvent(this, args);
+            FireEvent(sender, args);
         }
         protected virtual void OnMessageEvent(object sender, U args)
         {
@@ -151,7 +138,7 @@ namespace PHS.Networking.Server.Services
 
         public override void Dispose()
         {
-            foreach (var connection in _connectionManager.GetAll())
+            foreach (var connection in _connectionManager.GetAllConnections())
             {
                 DisconnectConnectionAsync(connection).Wait();
             }
@@ -189,14 +176,14 @@ namespace PHS.Networking.Server.Services
         {
             get
             {
-                return _connectionManager.GetAll();
+                return _connectionManager.GetAllConnections();
             }
         }
         public int ConnectionCount
         {
             get
             {
-                return _connectionManager.Count();
+                return _connectionManager.CountConnections();
             }
         }
     }
