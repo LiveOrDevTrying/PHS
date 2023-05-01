@@ -24,29 +24,29 @@ namespace PHS.Networking.Server.Managers
             }
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAllConnections()
         {
-            return _connections.Values.ToArray();
+            return _connections.Values;
         }
-        public virtual ConcurrentDictionary<string, T> GetAllDictionary()
+        public virtual ConcurrentDictionary<string, T> GetAllConnectionsDictionary()
         {
             return _connections;
         }
-        public virtual bool Get(string id, out T connection)
+        public virtual bool GetConnection(string id, out T connection)
         {
             return _connections.TryGetValue(id, out connection);
         }
-        public virtual bool Add(string id, T connection)
+        public virtual bool AddConnection(string id, T connection)
         {
             return _connections.TryAdd(id, connection);
         }
-        public virtual bool Remove(string id)
+        public virtual bool RemoveConnection(string id)
         {
             return _connections.TryRemove(id, out var _);
         }
-        public virtual int Count()
+        public virtual int CountConnections()
         {
-            return _connections.Skip(0).Count();
+            return _connections.Count;
         }
     }
 }
