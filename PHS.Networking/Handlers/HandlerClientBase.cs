@@ -1,9 +1,6 @@
-﻿using PHS.Networking.Events;
-using PHS.Networking.Events.Args;
+﻿using PHS.Networking.Events.Args;
 using PHS.Networking.Models;
 using PHS.Networking.Services;
-using System;
-using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
