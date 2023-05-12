@@ -21,10 +21,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Handlers\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+  </ItemGroup>
 </Project>
