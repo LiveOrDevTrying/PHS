@@ -14,7 +14,7 @@ namespace PHS.Networking.Server.Handlers
         where T : ConnectionEventArgs<Z>
         where U : MessageEventArgs<Z>
         where V : ErrorEventArgs<Z>
-        where W : Params
+        where W : IParams
         where Z : IConnection
     {
         protected bool _isRunning;

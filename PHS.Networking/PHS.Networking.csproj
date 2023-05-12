@@ -27,4 +27,7 @@
     <PackageReference Include="PHS.Core" Version="7.0.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+  </ItemGroup>
 </Project>

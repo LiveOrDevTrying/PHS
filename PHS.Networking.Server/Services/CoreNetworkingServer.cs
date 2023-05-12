@@ -18,7 +18,7 @@ namespace PHS.Networking.Server.Services
         where T : ConnectionEventArgs<Z>
         where U : MessageEventArgs<Z>
         where V : ErrorEventArgs<Z>
-        where W : Params
+        where W : IParams
         where X : HandlerServerBase<T, U, V, W, Z>
         where Y : ConnectionManager<Z>
         where Z : IConnection
