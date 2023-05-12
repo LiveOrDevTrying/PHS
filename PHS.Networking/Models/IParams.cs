@@ -2,7 +2,7 @@
 
 namespace PHS.Networking.Models
 {
-    public abstract class Params
+    public interface IParams
     {
     }
 }
