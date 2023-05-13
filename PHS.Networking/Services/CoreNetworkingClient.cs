@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PHS.Networking.Services
 {
-    public abstract class CoreNetworkingClient<T, U, V, W, X, Y> : 
+    public abstract class CoreNetworkingClient<T, U, V, W, X, Y> :
         CoreNetworkingGeneric<T, U, V, W, Y>,
         ICoreNetworkingClient<T, U, V, Y>
         where T : ConnectionEventArgs<Y>
