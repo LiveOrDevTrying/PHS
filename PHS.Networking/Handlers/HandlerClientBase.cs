@@ -29,7 +29,7 @@ namespace PHS.Networking.Handlers
 
         public override void Dispose()
         {
-            DisconnectAsync().Wait();
+            _connection?.Dispose();
         }
 
         public Y Connection

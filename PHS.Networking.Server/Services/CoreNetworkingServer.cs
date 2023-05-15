@@ -40,13 +40,19 @@ namespace PHS.Networking.Server.Services
             _handler.ServerEvent += OnServerEvent;
         }
        
-        public virtual void Start(CancellationToken cancellationToken = default)
+        public virtual Task StartAsync(CancellationToken cancellationToken = default)
         {
             _cancellationToken = cancellationToken;
             _handler.Start(cancellationToken);
+            return Task.CompletedTask;
         }
-        public virtual void Stop(CancellationToken cancellationToken = default)
+        public virtual async Task StopAsync(CancellationToken cancellationToken = default)
         {
+            foreach (var connection in _connectionManager.GetAllConnections())
+            {
+                await DisconnectConnectionAsync(connection);
+            }
+
             _handler.Stop(cancellationToken);
         }
 
@@ -106,7 +112,15 @@ namespace PHS.Networking.Server.Services
             switch (args.ConnectionEventType)
             {
                 case ConnectionEventType.Connected:
-                    _connectionManager.AddConnection(args.Connection.ConnectionId, args.Connection);
+                    if (!_connectionManager.AddConnection(args.Connection.ConnectionId, args.Connection))
+                    {
+                        Task.Run(async () =>
+                        {
+                            FireEvent(this, args);
+                            await DisconnectConnectionAsync(args.Connection, args.CancellationToken).ConfigureAwait(false);
+                        });
+                        return;
+                    }
                     break;
                 case ConnectionEventType.Disconnect:
                     _connectionManager.RemoveConnection(args.Connection.ConnectionId);
@@ -140,19 +154,7 @@ namespace PHS.Networking.Server.Services
 
         public override void Dispose()
         {
-            foreach (var connection in _connectionManager.GetAllConnections())
-            {
-                DisconnectConnectionAsync(connection).Wait();
-            }
-
-            if (_handler != null)
-            {
-                _handler.ConnectionEvent -= OnConnectionEvent;
-                _handler.MessageEvent -= OnMessageEvent;
-                _handler.ErrorEvent -= OnErrorEvent;
-                _handler.ServerEvent -= OnServerEvent;
-                _handler.Dispose();
-            }
+            StopAsync().Wait();
         }
 
         public event NetworkingEventHandler<ServerEventArgs> ServerEvent
