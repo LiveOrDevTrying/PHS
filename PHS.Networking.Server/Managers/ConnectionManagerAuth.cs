@@ -44,7 +44,7 @@ namespace PHS.Networking.Server.Managers
             
             var success = _connections.TryRemove(id, out var _);
 
-            if (user.Value.RemoveConnection(id) && user.Value.CountConnections() == 0)
+            if (user.Value != null && user.Value.RemoveConnection(id) && user.Value.CountConnections() == 0)
             {
                 _users.TryRemove(user.Key, out var _);
             }

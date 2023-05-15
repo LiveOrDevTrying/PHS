@@ -9,6 +9,8 @@ using PHS.Networking.Events.Args;
 using PHS.Networking.Server.Handlers;
 using PHS.Networking.Server.Managers;
 using PHS.Networking.Enums;
+using System.Linq;
+using System;
 
 namespace PHS.Networking.Server.Services
 {
@@ -48,9 +50,9 @@ namespace PHS.Networking.Server.Services
         }
         public virtual async Task StopAsync(CancellationToken cancellationToken = default)
         {
-            foreach (var connection in _connectionManager.GetAllConnections())
+            foreach (var connection in _connectionManager.GetAllConnections().ToList())
             {
-                await DisconnectConnectionAsync(connection);
+                await DisconnectConnectionAsync(connection, cancellationToken).ConfigureAwait(false);
             }
 
             _handler.Stop(cancellationToken);
@@ -114,9 +116,10 @@ namespace PHS.Networking.Server.Services
                 case ConnectionEventType.Connected:
                     if (!_connectionManager.AddConnection(args.Connection.ConnectionId, args.Connection))
                     {
+                        FireEvent(this, args);
+
                         Task.Run(async () =>
                         {
-                            FireEvent(this, args);
                             await DisconnectConnectionAsync(args.Connection, args.CancellationToken).ConfigureAwait(false);
                         });
                         return;
