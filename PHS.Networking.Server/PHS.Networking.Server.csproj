@@ -17,6 +17,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Handlers\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -27,4 +30,7 @@
     <PackageReference Include="PHS.Networking" Version="3.0.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+  </ItemGroup>
 </Project>
