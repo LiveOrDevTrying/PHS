@@ -6,7 +6,7 @@
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
     <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
     <Version>2.2.0</Version>
-    <Description>The server core networking module for Pixel Horror Studios. This package contains events and models for network payloads for Server connections. This package is used as a base module for many different applications requiring server-side networking including but not limited to: Allie.Chat, The Monitaur, Tcp.NET, WebsocketsSimple, and NTier.NET.</Description>
+    <Description>The server core networking module for Pixel Horror Studios. This package contains events and models for network payloads for Server connections. This package is used as a base module for many different applications requiring server-side networking including but not limited to: Allie.Chat, TheMonitaur, Tcp.NET, Udp.NET, WebsocketsSimple, and NTier.NET.</Description>
     <Copyright>Copyright 2023</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/LiveOrDevTrying/PHS</PackageProjectUrl>
@@ -16,6 +16,9 @@
     <PackageTags>Base Networking Client Server PHS PixelHorrorStudios Pixel Horror Studios Core liveordevtrying</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Handlers\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Logo.png">
       <Pack>True</Pack>
@@ -27,4 +30,7 @@
     <PackageReference Include="PHS.Networking" Version="2.2.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+  </ItemGroup>
 </Project>
