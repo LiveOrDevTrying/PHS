@@ -27,7 +27,6 @@ namespace PHS.Networking.Server.Services
     {
         protected readonly X _handler;
         protected readonly Y _connectionManager;
-        protected CancellationToken _cancellationToken;
 
         protected event NetworkingEventHandler<ServerEventArgs> _serverEvent;
 
@@ -44,7 +43,6 @@ namespace PHS.Networking.Server.Services
        
         public virtual Task StartAsync(CancellationToken cancellationToken = default)
         {
-            _cancellationToken = cancellationToken;
             _handler.Start(cancellationToken);
             return Task.CompletedTask;
         }
