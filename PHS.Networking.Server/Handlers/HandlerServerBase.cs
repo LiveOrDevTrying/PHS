@@ -14,7 +14,7 @@ namespace PHS.Networking.Server.Handlers
         where T : ConnectionEventArgs<Z>
         where U : MessageEventArgs<Z>
         where V : ErrorEventArgs<Z>
-        where W : Params
+        where W : IParams
         where Z : IConnection
     {
         protected bool _isRunning;
@@ -30,11 +30,16 @@ namespace PHS.Networking.Server.Handlers
 
         public abstract Task<bool> SendAsync(string message, Z connection, CancellationToken cancellationToken);
         public abstract Task<bool> SendAsync(byte[] message, Z connection, CancellationToken cancellationToken);
-        public abstract Task<bool> DisconnectConnectionAsync(Z connection, CancellationToken cancellationToken);
+        public abstract Task<bool> DisconnectConnectionAsync(Z connection, CancellationToken cancellationToken, string disconnectionMessage = "");
 
         protected virtual void FireEvent(object sender, ServerEventArgs args)
         {
             _serverEvent?.Invoke(this, args);
+        }
+
+        public override void Dispose()
+        {
+            Stop();
         }
 
         public bool IsServerRunning
