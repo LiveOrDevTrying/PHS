@@ -1,6 +1,7 @@
 ﻿using PHS.Networking.Server.Models;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PHS.Networking.Server.Managers
 {
@@ -9,56 +10,46 @@ namespace PHS.Networking.Server.Managers
         protected ConcurrentDictionary<A, ConnectionManager<Z>> _users =
             new ConcurrentDictionary<A, ConnectionManager<Z>>();
 
-        public virtual bool AddIdentity(Z identity)
+        public virtual IEnumerable<Z> GetAllConnectionsForUser(A id)
         {
-            AddConnection(identity.ConnectionId, identity);
-
-            if (!_users.TryGetValue(identity.UserId, out var userOriginal))
+            if (_users.TryGetValue(id, out var user))
             {
-                userOriginal = new ConnectionManager<Z>();
-                if (!_users.TryAdd(identity.UserId, userOriginal))
-                {
-                    return false;
-                }
+                return user.GetAllConnections();
             }
 
-            var userNew = new ConnectionManager<Z>(userOriginal.GetAllConnectionsDictionary());
-            userNew.AddConnection(identity.ConnectionId, identity);
-            return _users.TryUpdate(identity.UserId, userNew, userOriginal);
+            return System.Array.Empty<Z>();
         }
-        public override bool RemoveConnection(string id)
+
+        public virtual bool AddUser(Z identity)
         {
-            _connections.TryRemove(id, out var _);
-
-            try
+            if (AddConnection(identity.ConnectionId, identity))
             {
-                A userToRemove = default;
-                bool removeUser = false;
-                foreach (var user in _users)
+                if (!_users.TryGetValue(identity.UserId, out var user))
                 {
-                    if (user.Value.RemoveConnection(id))
+                    user = new ConnectionManager<Z>();
+                    if (!_users.TryAdd(identity.UserId, user))
                     {
-                        if (user.Value.CountConnections() == 0)
-                        {
-                            userToRemove = user.Key;
-                            removeUser = true;
-                            break;
-                        }
-
-                        return true;
+                        return false;
                     }
                 }
 
-                if (removeUser)
-                {
-                    _users.TryRemove(userToRemove, out var _);
-                    return true;
-                }
+                return user.AddConnection(identity.ConnectionId, identity);
             }
-            catch
-            { }
 
             return false;
+        }
+        public override bool RemoveConnection(string id)
+        {
+            var user = _users.FirstOrDefault(x => x.Value.GetConnection(id, out var _));
+            
+            var success = _connections.TryRemove(id, out var _);
+
+            if (user.Value != null && user.Value.RemoveConnection(id) && user.Value.CountConnections() == 0)
+            {
+                _users.TryRemove(user.Key, out var _);
+            }
+
+            return success;
         }
 
         public IEnumerable<Z> GetAll(A id)
