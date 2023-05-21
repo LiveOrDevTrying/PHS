@@ -67,17 +67,17 @@ namespace PHS.Networking.Utilities
 
             return true;
         }
-        public static bool ByteArrayContainsSequence(byte[] toSearch, byte[] toFind)
+        public static int ByteArrayContainsSequence(byte[] toSearch, byte[] toFind)
         {
             for (var i = 0; i < toSearch.Length; i++)
             { 
                 if (ByteArrayEquals(toSearch, toFind, i))
                 {
-                    return true;
+                    return i;
                 }
             }
 
-            return false;
+            return -1;
         }
     }
 }
