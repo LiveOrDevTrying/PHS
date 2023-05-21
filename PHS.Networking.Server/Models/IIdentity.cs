@@ -4,6 +4,6 @@ namespace PHS.Networking.Server.Models
 {
     public interface IIdentity<T> : IConnection
     {
-        public T UserId { get; set; }
+        T UserId { get; set; }
     }
 }
