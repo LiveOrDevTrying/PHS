@@ -18,5 +18,6 @@ namespace PHS.Networking.Services
         Task<bool> DisconnectAsync(CancellationToken cancellationToken = default);
 
         W Connection { get; }
+        bool IsRunning { get; }
     }
 }
