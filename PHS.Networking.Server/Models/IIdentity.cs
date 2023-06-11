@@ -2,7 +2,7 @@
 
 namespace PHS.Networking.Server.Models
 {
-    public interface IIdentity<T> : IConnection
+    public interface IIdentity<T> : IConnectionServer
     {
         T UserId { get; set; }
     }
