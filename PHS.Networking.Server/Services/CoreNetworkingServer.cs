@@ -11,6 +11,7 @@ using PHS.Networking.Server.Managers;
 using PHS.Networking.Enums;
 using System.Linq;
 using System;
+using PHS.Networking.Server.Models;
 
 namespace PHS.Networking.Server.Services
 {
@@ -23,7 +24,7 @@ namespace PHS.Networking.Server.Services
         where W : IParams
         where X : HandlerServerBase<T, U, V, W, Z>
         where Y : ConnectionManager<Z>
-        where Z : IConnection
+        where Z : IConnectionServer
     {
         protected readonly X _handler;
         protected readonly Y _connectionManager;
