@@ -21,7 +21,7 @@ namespace PHS.Networking.Services
 
         public CoreNetworkingClient(W parameters) : base(parameters)
         {
-            _handler = CreateTcpClientHandler();
+            _handler = CreateHandler();
             _handler.ConnectionEvent += OnConnectionEvent;
             _handler.MessageEvent += OnMessageEvent;
             _handler.ErrorEvent += OnErrorEvent;
@@ -58,7 +58,7 @@ namespace PHS.Networking.Services
             FireEvent(this, args);
         }
 
-        protected abstract X CreateTcpClientHandler();
+        protected abstract X CreateHandler();
 
         public override void Dispose()
         {
@@ -76,6 +76,14 @@ namespace PHS.Networking.Services
             get
             {
                 return _handler.Connection;
+            }
+        }
+
+        public bool IsRunning
+        {
+            get
+            {
+                return _handler.IsRunning;
             }
         }
     }
