@@ -16,6 +16,7 @@ namespace PHS.Networking.Handlers
         where Y : IConnection
     {
         protected Y _connection;
+        protected bool _isRunning;
 
         public HandlerClientBase(W parameters) : base(parameters)
         {
@@ -37,6 +38,14 @@ namespace PHS.Networking.Handlers
             get
             {
                 return _connection;
+            }
+        }
+
+        public bool IsRunning
+        {
+            get
+            {
+                return _isRunning;
             }
         }
     }
