@@ -28,6 +28,8 @@ namespace PHS.Networking.Server.Services
     {
         protected readonly X _handler;
         protected readonly Y _connectionManager;
+        protected readonly byte[] _certificate;
+        protected readonly string _certificatePassword;
 
         protected event NetworkingEventHandler<ServerEventArgs> _serverEvent;
 
@@ -41,7 +43,21 @@ namespace PHS.Networking.Server.Services
             _handler.ErrorEvent += OnErrorEvent;
             _handler.ServerEvent += OnServerEvent;
         }
-       
+
+        public CoreNetworkingServer(W parameters, byte[] certificate, string certificatePassword) : base(parameters)
+        {
+            _certificate = certificate;
+            _certificatePassword = certificatePassword;
+
+            _connectionManager = CreateConnectionManager();
+
+            _handler = CreateHandler();
+            _handler.ConnectionEvent += OnConnectionEvent;
+            _handler.MessageEvent += OnMessageEvent;
+            _handler.ErrorEvent += OnErrorEvent;
+            _handler.ServerEvent += OnServerEvent;
+        }
+
         public virtual Task StartAsync(CancellationToken cancellationToken = default)
         {
             _handler.Start(cancellationToken);
